@@ -133,6 +133,10 @@ public class MyLinkedList <Type extends Comparable<Type>>{
 
     }
     public void moveToFront(){
+        Node temp = current;
+        remove();
+        current = first;
+        addBefore(temp.item);
 
     }
     public void swapWithPrevious(){
