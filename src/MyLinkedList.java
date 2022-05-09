@@ -137,10 +137,14 @@ public class MyLinkedList <Type extends Comparable<Type>>{
         remove();
         current = first;
         addBefore(temp.item);
-
     }
-    public void swapWithPrevious(){
 
+    public void swapWithPrevious(){
+        if(previous != null && current != null){
+            Type temp = current.item;
+            current.item = previous.item;
+            previous.item = temp;
+        }
     }
     public String toString(){
         Node tempNode = first;

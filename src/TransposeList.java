@@ -1,29 +1,33 @@
-
-public class MTFList <Type extends Comparable<Type>>{
+public class TransposeList<Type extends Comparable<Type>>{
     private MyLinkedList<Type> list = new MyLinkedList<>();
 
     public void add(Type item){
-        list.first();
         list.addBefore(item);
-        list.first();
     }
     public Type remove(Type item){
-        for(list.first(); list.current() != null; list.next()){
+
+        for (list.first(); list.current() != null; list.next()) {
             if(list.current().compareTo(item) == 0){
-                return list.remove();
+                Type temp = list.remove();
+                while(list.current() != null){
+                    list.next();
+                }
+                return temp;
             }
         }
         return null;
+        
     }
 
     public Type find(Type item){
-        for(list.first(); list.current() != null; list.next()){
+        for (list.first(); list.current() != null; list.next()) {
             if(list.current().compareTo(item) == 0){
                 Type temp = list.current();
-                list.remove();
-                list.first();
-                list.addBefore(temp);
-                return list.first();
+                list.swapWithPrevious();
+                while(list.current() != null){
+                    list.next();
+                }
+                return temp;
             }
         }
         return null;
